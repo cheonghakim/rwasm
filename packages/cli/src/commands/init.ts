@@ -50,8 +50,10 @@ export async function initCommand(options: InitOptions): Promise<void> {
   log.success("Rust WASM 프로젝트가 성공적으로 준비되었습니다!");
   console.log("");
   console.log("다음 단계:");
-  console.log(`  1. 패키지 설치: npm install -D rwasm @rwasm/core`);
-  console.log(`  2. WASM 빌드: npx rwasm build`);
+  console.log(
+    `  1. 패키지 설치: npm install -D @cheonghakim/rwasm @cheonghakim/core`,
+  );
+  console.log(`  2. WASM 빌드: npx @cheonghakim/rwasm build`);
   console.log(`  3. 프로젝트에서 사용하기:`);
   console.log("");
   const importPath = options.dir.startsWith("./")

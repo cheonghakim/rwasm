@@ -1,5 +1,5 @@
 {
-  "name": "rwasm",
+  "name": "@cheonghakim/rwasm",
   "version": "0.1.0",
   "description": "Simplify Rust WebAssembly in JavaScript/TypeScript projects",
   "type": "module",
