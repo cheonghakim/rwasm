@@ -1,6 +1,6 @@
 {
   "name": "@cheonghakim/webpack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack plugin for Rust WebAssembly with rwasm",
   "type": "module",
   "exports": {
@@ -13,7 +13,9 @@
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
