@@ -40,7 +40,9 @@ pub fn greet(name: &str) -> String {
 }
 `;
 
-const CONFIG_TS = (dir: string) => `import { defineConfig } from 'rwasm';
+const CONFIG_TS = (
+  dir: string,
+) => `import { defineConfig } from '@cheonghakim/rwasm';
 
 export default defineConfig({
   crate: '${dir}',
@@ -94,11 +96,11 @@ export async function scaffoldRustCrate(
       let modified = false;
 
       if (!scripts["wasm:build"]) {
-        scripts["wasm:build"] = "rwasm build";
+        scripts["wasm:build"] = "npx @cheonghakim/rwasm build";
         modified = true;
       }
       if (!scripts["wasm:dev"]) {
-        scripts["wasm:dev"] = "rwasm dev";
+        scripts["wasm:dev"] = "npx @cheonghakim/rwasm dev";
         modified = true;
       }
 

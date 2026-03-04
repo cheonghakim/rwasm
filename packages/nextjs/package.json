@@ -1,5 +1,5 @@
 {
-  "name": "@rwasm/nextjs",
+  "name": "@cheonghakim/nextjs",
   "version": "0.1.0",
   "description": "Next.js plugin for Rust WebAssembly with rwasm",
   "type": "module",
@@ -25,5 +25,8 @@
   "devDependencies": {
     "@types/node": "^25.3.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

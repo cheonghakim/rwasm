@@ -1,4 +1,4 @@
-# rwasm
+# @cheonghakim/rwasm
 
 Rust WebAssembly를 JS/TS 프로젝트에서 쉽게 쓰기 위한 도구
 
@@ -7,20 +7,20 @@ wasm-pack 설치, 빌드 타겟 설정, 환경별 import 차이 같은 번거로
 ## 설치
 
 ```bash
-npm install -D rwasm @rwasm/core
+npm install -D @cheonghakim/rwasm @cheonghakim/core
 ```
 
 ## 시작하기
 
 ```bash
 # Rust 크레이트 생성
-npx rwasm init --name my-wasm
+npx @cheonghakim/rwasm init --name my-wasm
 
 # WASM 빌드
-npx rwasm build
+npx @cheonghakim/rwasm build
 
 # 개발 모드 (파일 변경 시 자동 리빌드)
-npx rwasm dev
+npx @cheonghakim/rwasm dev
 ```
 
 `rwasm init`을 실행하면 아래 구조가 만들어진다:
@@ -28,7 +28,7 @@ npx rwasm dev
 ```
 your-project/
 ├── rust/
-│   ├── Cargo.toml
+├── Cargo.toml
 │   └── src/
 │       └── lib.rs        ← Rust 코드
 ├── rwasm.config.ts
@@ -99,13 +99,13 @@ console.log(wasm.add(40, 2)); // 42
 ### Vite
 
 ```bash
-npm install -D @rwasm/vite
+npm install -D @cheonghakim/vite
 ```
 
 ```typescript
 // vite.config.ts
 import { defineConfig } from "vite";
-import rwasm from "@rwasm/vite";
+import rwasm from "@cheonghakim/vite";
 
 export default defineConfig({
   plugins: [rwasm({ crate: "./rust" })],
@@ -117,12 +117,12 @@ export default defineConfig({
 ### Webpack
 
 ```bash
-npm install -D @rwasm/webpack
+npm install -D @cheonghakim/webpack
 ```
 
 ```javascript
 // webpack.config.js
-const { RwasmWebpackPlugin } = require("@rwasm/webpack");
+const { RwasmWebpackPlugin } = require("@cheonghakim/webpack");
 
 module.exports = {
   plugins: [new RwasmWebpackPlugin({ crate: "./rust" })],
@@ -132,12 +132,12 @@ module.exports = {
 ### Next.js
 
 ```bash
-npm install -D @rwasm/nextjs
+npm install -D @cheonghakim/nextjs
 ```
 
 ```javascript
 // next.config.mjs
-import { withRwasm } from "@rwasm/nextjs";
+import { withRwasm } from "@cheonghakim/nextjs";
 
 export default withRwasm({
   // Next.js 설정
@@ -149,7 +149,7 @@ export default withRwasm({
 프로젝트 루트에 `rwasm.config.ts`를 두면 된다
 
 ```typescript
-import { defineConfig } from "rwasm";
+import { defineConfig } from "@cheonghakim/rwasm";
 
 export default defineConfig({
   crate: "./rust",
@@ -173,19 +173,19 @@ export default defineConfig({
 | `rwasm dev`   | 파일 감시 + 자동 리빌드 |
 
 ```
-rwasm init [options]
+npx @cheonghakim/rwasm init [options]
   -n, --name <name>   크레이트 이름 (기본: wasm-lib)
   -d, --dir <path>    크레이트 디렉토리 (기본: ./rust)
   --no-config         rwasm.config.ts 생성 안 함
 
-rwasm build [options]
+npx @cheonghakim/rwasm build [options]
   --dev               개발 모드 (최적화 없이 빠르게)
   --release           릴리즈 모드 (기본)
   --target <target>   빌드 타겟 (기본: web)
   --out-dir <path>    출력 디렉토리
   --crate <path>      크레이트 경로
 
-rwasm dev [options]
+npx @cheonghakim/rwasm dev [options]
   --crate <path>      크레이트 경로
   --debounce <ms>     디바운스 간격 (기본: 300)
 ```
@@ -194,18 +194,18 @@ rwasm dev [options]
 
 1. `rwasm build` 실행 시 시스템에 wasm-pack이 없으면 자동으로 다운로드
 2. `wasm-pack build --target web`으로 `.wasm` + JS glue + TypeScript 타입 생성
-3. `@rwasm/core`와 연동되는 래퍼(`index.ts`)를 자동 생성
+3. `@cheonghakim/core`와 연동되는 래퍼(`index.ts`)를 자동 생성
 4. 래퍼의 `createWasmLoader`가 환경(브라우저/Node.js/Worker)을 감지해서 적절한 방식으로 WASM을 로드
 
 ## 패키지 구조
 
-```
-rwasm               CLI 도구
-@rwasm/core         런타임 로더 (zero-dependency)
-@rwasm/vite         Vite 플러그인
-@rwasm/webpack      Webpack 플러그인
-@rwasm/nextjs       Next.js 플러그인
-```
+| 패키지                 | 설명                          |
+| ---------------------- | ----------------------------- |
+| `@cheonghakim/rwasm`   | CLI 도구                      |
+| `@cheonghakim/core`    | 런타임 로더 (zero-dependency) |
+| `@cheonghakim/vite`    | Vite 플러그인                 |
+| `@cheonghakim/webpack` | Webpack 플러그인              |
+| `@cheonghakim/nextjs`  | Next.js 플러그인              |
 
 ## 요구 사항
 
