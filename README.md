@@ -77,6 +77,14 @@ await wasmModule.ready.greet("World"); // "Hello, World!"
 ### Vanilla HTML (번들러 없이)
 
 ```html
+<script type="importmap">
+  {
+    "imports": {
+      "@cheonghakim/core": "./node_modules/@cheonghakim/core/dist/index.mjs"
+    }
+  }
+</script>
+
 <script type="module">
   import { wasmModule } from "./rust/pkg/index.js";
 
