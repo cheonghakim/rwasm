@@ -51,6 +51,46 @@ export default defineConfig({
 });
 `;
 
+const INDEX_HTML = (name: string) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${name} - rwasm</title>
+    <style>
+        body { font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f0f4f8; }
+        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; }
+        h1 { color: #2d3748; margin-top: 0; }
+        button { background: #4a5568; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+        button:hover { background: #2d3748; }
+        #result { margin-top: 1rem; font-weight: bold; color: #4a5568; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>${name} + rwasm</h1>
+        <p>Rust WebAssembly + Vanilla JavaScript</p>
+        <button id="btn">Call Rust add(10, 20)</button>
+        <div id="result"></div>
+    </div>
+
+    <script type="module">
+        // Import the generated wrapper
+        import { wasmModule } from './pkg/index.js';
+
+        const btn = document.getElementById('btn');
+        const result = document.getElementById('result');
+
+        btn.addEventListener('click', async () => {
+            // .ready proxy automatically loads the WASM module
+            const sum = await wasmModule.ready.add(10, 20);
+            result.textContent = \`Result from Rust: \${sum}\`;
+        });
+    </script>
+</body>
+</html>
+`;
+
 export async function scaffoldRustCrate(
   projectRoot: string,
   options: ScaffoldOptions,
@@ -84,6 +124,13 @@ export async function scaffoldRustCrate(
       await writeFile(configPath, CONFIG_TS(options.dir), "utf-8");
       log.step(`Created rwasm.config.ts`);
     }
+  }
+
+  // Write index.html if it doesn't exist
+  const htmlPath = join(projectRoot, "index.html");
+  if (!existsSync(htmlPath)) {
+    await writeFile(htmlPath, INDEX_HTML(options.name), "utf-8");
+    log.step(`Created index.html`);
   }
 
   // Add scripts to package.json if it exists
