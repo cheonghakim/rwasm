@@ -1,0 +1,9 @@
+{
+  "name": "e2e-test",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "wasm:build": "rwasm build",
+    "wasm:dev": "rwasm dev"
+  }
+}

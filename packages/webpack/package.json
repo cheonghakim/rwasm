@@ -1,0 +1,29 @@
+{
+  "name": "@rwasm/webpack",
+  "version": "0.1.0",
+  "description": "Webpack plugin for Rust WebAssembly with rwasm",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "webpack": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3"
+  },
+  "license": "MIT"
+}

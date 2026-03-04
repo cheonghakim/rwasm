@@ -1,0 +1,26 @@
+{
+  "name": "@rwasm/vite",
+  "version": "0.1.0",
+  "description": "Vite plugin for Rust WebAssembly with rwasm",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vite": ">=5.0.0"
+  },
+  "license": "MIT"
+}

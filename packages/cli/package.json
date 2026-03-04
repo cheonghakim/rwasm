@@ -1,0 +1,42 @@
+{
+  "name": "rwasm",
+  "version": "0.1.0",
+  "description": "Simplify Rust WebAssembly in JavaScript/TypeScript projects",
+  "type": "module",
+  "bin": {
+    "rwasm": "./dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.0",
+    "commander": "^12.1.0",
+    "picocolors": "^1.1.0"
+  },
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "rust",
+    "wasm-pack",
+    "cli"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.3.3"
+  }
+}

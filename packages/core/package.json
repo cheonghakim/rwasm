@@ -1,0 +1,36 @@
+{
+  "name": "@rwasm/core",
+  "version": "0.1.0",
+  "description": "Universal runtime loader for Rust WebAssembly modules",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "rust",
+    "wasm-bindgen",
+    "loader"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.3.3"
+  }
+}
