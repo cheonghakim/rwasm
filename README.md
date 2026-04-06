@@ -6,8 +6,24 @@ wasm-pack 설치, 빌드 타겟 설정, 환경별 import 차이 같은 번거로
 
 ## 설치
 
+# unbundled
 ```bash
 npm install -D @cheonghakim/rwasm @cheonghakim/core
+```
+
+# vite
+```bash
+npm install -D @cheonghakim/rwasm @cheonghakim/core @cheonghakim/vite
+```
+
+# webpack
+```bash
+npm install -D @cheonghakim/rwasm @cheonghakim/core @cheonghakim/webpack
+```
+
+# nextjs
+```bash
+npm install -D @cheonghakim/rwasm @cheonghakim/core @cheonghakim/nextjs
 ```
 
 ## 시작하기
